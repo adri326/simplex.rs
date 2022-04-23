@@ -30,6 +30,14 @@ impl Row {
         self.minus_z = self.minus_z * inverted;
     }
 
+    pub fn mul(&mut self, by: SuperReal) {
+        for c in self.coefficients.iter_mut() {
+            *c = *c * by;
+        }
+
+        self.minus_z = self.minus_z * by;
+    }
+
     pub fn add(&mut self, row: &Row) {
         assert!(self.len() == row.len());
 
